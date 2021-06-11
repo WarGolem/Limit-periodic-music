@@ -1,4 +1,3 @@
-#!/usr/local/bin/python3
 import subprocess
 from scipy.io import wavfile
 from pydub import AudioSegment
@@ -22,8 +21,8 @@ def halfmusic(srcmusicfile, dstmusicfile):  # Define the half volume function
 
 
 song = AudioSegment.from_file("D:\\FYP_Music\\BeatThee.mp3")  # Input the original MP3 file
-song.export("D:\\FYP_Music\\BeatThee.0s.wav", format="wav")   # Output wav file
+song[0:9*1000].export("D:\\FYP_Music\\BeatThee.0s.wav", format="wav")   # Output wav file
 
-for i in range(6):   # Double speed and half volume 5 times
-    a_speed(f"D:\\FYP_Music\\BeatThee.{i}s.wav", "2", f"D:\\FYP_Music\\BeatThee.{i + 1}x.wav")
+for i in range(6):   # Halve music speed and volume 6 times
+    a_speed(f"D:\\FYP_Music\\BeatThee.{i}s.wav", "0.5", f"D:\\FYP_Music\\BeatThee.{i + 1}x.wav")
     halfmusic(f"D:\\FYP_Music\\BeatThee.{i + 1}x.wav", f"D:\\FYP_Music\\BeatThee.{i + 1}s.wav")
